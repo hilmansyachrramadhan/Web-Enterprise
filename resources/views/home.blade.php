@@ -7,7 +7,7 @@
 <section class="hero-section">
     <img src="{{ asset('images/assetbuilding.png') }}" alt="Building" class="hero-image">
     <div class="hero-overlay">
-        <h1 class="hero-text">INGIN KULIAH DAN BERKARIR<br>DI LUAR NEGERI ?</h1>
+        <h1 class="hero-text">INGIN KULIAH DAN BERKARIR<br>DI LUAR NEGERI?</h1>
         <button class="btn btn-details">
             SELENGKAPNYA <i class="fas fa-chevron-down ms-2"></i>
         </button>
@@ -17,12 +17,12 @@
 <!-- About Section -->
 <section class="about-section">
     <div class="container">
-        <h2 class="section-title" color="#4A4A4A">Tentang Kami</h2>
-        <div class="about-content" color="#4A4A4A">
+        <h2 class="section-title">Tentang Kami</h2>
+        <div class="about-content">
             <p>
-                INAKLUG adalah konsulta Pendidikan Internasional di Indonesia yang sudah 
-                <br> memberangkatkan lebih dari 3000 mahasiswa Indonesia yang ingin kuliah, perjalanan
-                <br> wisata dan berkarir di negara maju di dunia 
+                INAKLUG adalah konsultan Pendidikan Internasional di Indonesia yang sudah 
+                memberangkatkan lebih dari 3000 mahasiswa Indonesia yang ingin kuliah, perjalanan 
+                wisata dan berkarir di negara maju di dunia.
             </p>
         </div>
     </div>
@@ -34,7 +34,7 @@
         <h2 class="section-title">Layanan Kami</h2>
         <div class="row">
             @foreach($services as $service)
-            <div class="col-md-4">
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
                 <div class="service-card">
                     <img src="{{ asset('images/' . $service['image']) }}" alt="{{ $service['title'] }}">
                     <div class="service-card-body">
@@ -54,7 +54,7 @@
         <h2 class="section-title">Mitra Kami</h2>
         <div class="row justify-content-center align-items-center">
             @foreach($partners as $partner)
-            <div class="col-6 col-md-3 text-center">
+            <div class="col-6 col-sm-4 col-md-3 text-center mb-3">
                 <img src="{{ asset('images/partners/' . $partner['logo']) }}" 
                      alt="{{ $partner['name'] }}" 
                      class="partner-logo">
@@ -88,7 +88,7 @@
         <h2 class="section-title">Hubungi Kami</h2>
         
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-12 col-lg-6 mb-4 mb-lg-0">
                 <div class="contact-info">
                     <h4>Informasi Kontak</h4>
                     <div class="contact-item">
@@ -124,7 +124,7 @@
                 </div>
             </div>
             
-            <div class="col-md-6">
+            <div class="col-12 col-lg-6">
                 <div class="message-form">
                     <h4 class="mb-4" style="color: var(--primary-purple);">Kirim Pesan</h4>
                     @if(session('success'))
@@ -156,7 +156,8 @@
                         height="100%" 
                         style="border:0;" 
                         allowfullscreen="" 
-                        loading="lazy">
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
             </div>
@@ -167,8 +168,41 @@
 
 @section('scripts')
 <script>
+    // Smooth scroll to about section when clicking details button
     document.querySelector('.btn-details').addEventListener('click', function() {
-        document.querySelector('.about-section').scrollIntoView({ behavior: 'smooth' });
+        document.querySelector('.about-section').scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
     });
+
+    // Auto-close navbar on mobile when clicking a link
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            
+            if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
+                navbarToggler.click();
+            }
+        });
+    });
+
+    // Lazy loading for images
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        document.querySelectorAll('img').forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
 </script>
 @endsection

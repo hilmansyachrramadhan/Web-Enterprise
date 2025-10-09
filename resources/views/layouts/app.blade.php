@@ -11,7 +11,7 @@
             --primary-purple: #46074E; 
             --primary-blue: #197BD0;
             --gradient-start: #46074E;
-            --gradient-end: #197BD0 80% ;
+            --gradient-end: #197BD0;
         }
 
         * {
@@ -21,34 +21,47 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, ubuntu;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
         }
 
-        /* Navbar Styling */
+        /* ========== NAVBAR STYLING ========== */
         .navbar-custom {
             background: linear-gradient(90deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
             padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            width: 1366px;
-            height: 80px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-custom.shrink {
+            padding: 0.5rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .navbar-brand {
             color: white !important;
             font-size: 2rem;
-            width: 77px;
-            height: 40px;
             font-weight: bold;
             letter-spacing: 2px;
+            transition: font-size 0.3s ease;
         }
 
+        .navbar-custom.shrink .navbar-brand {
+            font-size: 1.5rem;
+        }
+
+        /* Navbar Links */
         .navbar-nav .nav-link {
-            color: rgba(255,255,255,0.9) !important;
+            color: rgba(255, 255, 255, 0.9) !important;
             margin: 0 1rem;
             font-weight: 500;
             transition: color 0.3s;
             position: relative;
+            padding: 0.5rem 0;
         }
 
         .navbar-nav .nav-link:hover,
@@ -59,7 +72,7 @@
         .navbar-nav .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
@@ -72,22 +85,30 @@
             width: 100%;
         }
 
+        /* Search Box */
         .search-box {
             position: relative;
             margin-right: 1rem;
         }
 
         .search-box input {
-            background: rgba(255,255,255,0.2);
-            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
             padding: 0.5rem 2.5rem 0.5rem 1rem;
             border-radius: 25px;
             width: 250px;
+            transition: all 0.3s;
         }
 
         .search-box input::placeholder {
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-box input:focus {
+            background: rgba(255, 255, 255, 0.3);
+            outline: none;
+            border-color: white;
         }
 
         .search-box i {
@@ -95,30 +116,49 @@
             right: 15px;
             top: 50%;
             transform: translateY(-50%);
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
+            pointer-events: none;
         }
 
+        /* Register Button */
         .btn-register {
-            background: #195395;
+            background: white;
             color: var(--primary-purple);
-            padding: 0.5rem 2rem;
+            padding: 0.5rem 1.5rem;
             border-radius: 25px;
             font-weight: 600;
             border: none;
             transition: all 0.3s;
+            white-space: nowrap;
         }
 
         .btn-register:hover {
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        /* Hero Section */
+        /* Hamburger Menu Custom */
+        .navbar-toggler {
+            border: 2px solid white;
+            padding: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.3);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* ========== HERO SECTION ========== */
         .hero-section {
             position: relative;
             height: 550px;
             overflow: hidden;
+            margin-top: 80px;
         }
 
         .hero-image {
@@ -128,24 +168,23 @@
             filter: brightness(70%);
         }
 
-        /* Overlay transparan biru keunguan */
         .hero-overlay {
             position: absolute;
-            width: 621px;
-            height: 120px;
+            max-width: 621px;
+            width: 90%;
             bottom: 80px;
-            left: 120px;
-            right: 120px;
-            background: linear-gradient(90deg, rgba(70,7,78,0.9) 0%, rgba(25,123,208,0.9) 100%);
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, rgba(70, 7, 78, 0.9) 0%, rgba(25, 123, 208, 0.9) 100%);
             border-radius: 6px;
             padding: 2rem 3rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 10px 10px 4px 0px rgba(0, 0, 0, 0.2);
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+            gap: 2rem;
         }
 
-        /* Teks besar putih */
         .hero-text {
             color: #fff;
             font-size: 20px;
@@ -155,17 +194,17 @@
             line-height: 1.4;
         }
 
-        /* Tombol putih transparan */
         .btn-details {
             background: transparent;
             border: 2px solid #fff;
             color: #fff;
-            padding: 0.8rem 2.5rem;
+            padding: 0.8rem 2rem;
             border-radius: 50px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 500;
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .btn-details:hover {
@@ -174,38 +213,7 @@
             transform: scale(1.05);
         }
 
-        /* Responsif (mobile) */
-        @media (max-width: 768px) {
-            .hero-section {
-                height: 450px;
-            }
-
-            .hero-overlay {
-                flex-direction: column;
-                text-align: center;
-                left: 20px;
-                right: 20px;
-                bottom: 40px;
-                padding: 1.5rem;
-            }
-
-            .hero-text {
-                font-size: 1.5rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .btn-details {
-                padding: 0.8rem 2rem;
-                font-size: 1rem;
-            }
-        }
-
-        .btn-details:hover {
-            background: white;
-            color: var(--primary-purple);
-        }
-
-        /* Section Styling */
+        /* ========== SECTION STYLING ========== */
         .section-title {
             text-align: center;
             font-size: 2.5rem;
@@ -238,14 +246,15 @@
             border: none;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
             margin-bottom: 2rem;
+            height: 100%;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         .service-card img {
@@ -272,19 +281,21 @@
         }
 
         .partner-logo {
-            width: 200px;
+            width: 100%;
+            max-width: 200px;
             height: 120px;
             object-fit: contain;
-            margin: 1rem;
+            margin: 1rem auto;
             filter: grayscale(100%);
             transition: filter 0.3s;
+            display: block;
         }
 
         .partner-logo:hover {
             filter: grayscale(0%);
         }
 
-        /* Free Consultation Section */
+        /* Consultation Section */
         .consultation-section {
             padding: 4rem 2rem;
             background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
@@ -297,7 +308,7 @@
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .consultation-box h3 {
@@ -339,15 +350,17 @@
         }
 
         .contact-item {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            gap: 1rem;
         }
 
         .contact-item i {
             color: var(--primary-purple);
-            margin-right: 1rem;
             font-size: 1.2rem;
+            margin-top: 0.2rem;
+            min-width: 20px;
         }
 
         .map-container {
@@ -361,13 +374,19 @@
             background: white;
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .form-control {
             border-radius: 10px;
             padding: 0.8rem;
             margin-bottom: 1rem;
+            border: 1px solid #ddd;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 0 0.2rem rgba(70, 7, 78, 0.25);
         }
 
         .btn-send {
@@ -392,31 +411,308 @@
             text-align: center;
         }
 
-        @media (max-width: 768px) {
+        /* ========== RESPONSIVE DESIGN ========== */
+        
+        /* Large Desktop (1400px+) */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1320px;
+            }
+        }
+
+        /* Desktop (1200px - 1399px) */
+        @media (max-width: 1399px) {
             .hero-overlay {
-                flex-direction: column;
-                text-align: center;
+                max-width: 550px;
+                padding: 1.5rem 2rem;
+            }
+            
+            .hero-text {
+                font-size: 18px;
+            }
+        }
+
+        /* Tablet Landscape (992px - 1199px) */
+        @media (max-width: 1199px) {
+            .navbar-nav .nav-link {
+                margin: 0 0.5rem;
+                font-size: 0.95rem;
+            }
+            
+            .search-box input {
+                width: 180px;
+            }
+            
+            .btn-register {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Tablet Portrait (768px - 991px) */
+        @media (max-width: 991px) {
+            .navbar-custom {
+                padding: 0.8rem 1rem;
             }
 
-            .hero-text {
-                font-size: 1.5rem;
-                margin-bottom: 2rem;
+            .navbar-collapse {
+                background: linear-gradient(180deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+                padding: 1.5rem;
+                margin-top: 1rem;
+                border-radius: 10px;
+            }
+
+            .navbar-nav {
+                margin-bottom: 1rem;
+            }
+
+            .navbar-nav .nav-link {
+                margin: 0.5rem 0;
+                padding: 0.5rem 1rem;
+                border-radius: 5px;
+            }
+
+            .navbar-nav .nav-link:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            .search-box {
+                margin-right: 0;
+                margin-bottom: 1rem;
+                width: 100%;
             }
 
             .search-box input {
-                width: 150px;
+                width: 100%;
+            }
+
+            .btn-register {
+                width: 100%;
+                padding: 0.8rem;
+            }
+
+            .hero-section {
+                height: 450px;
+                margin-top: 70px;
+            }
+
+            .hero-overlay {
+                flex-direction: column;
+                text-align: center;
+                bottom: 40px;
+                padding: 1.5rem;
+                gap: 1rem;
+            }
+
+            .hero-text {
+                font-size: 16px;
+            }
+
+            .btn-details {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .consultation-box {
+                padding: 2rem;
+            }
+
+            .consultation-box h3 {
+                font-size: 1.5rem;
             }
         }
 
-        /* --- NAVBAR SHRINK ON SCROLL --- */
-        .navbar-custom.shrink {
-            background: rgba(59, 59, 152, 0.9);
-            padding: 0.4rem 1rem;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-            backdrop-filter: blur(6px);
-            transition: all 0.4s ease;
+        /* Mobile Landscape (576px - 767px) */
+        @media (max-width: 767px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+
+            .hero-section {
+                height: 400px;
+            }
+
+            .hero-overlay {
+                max-width: 85%;
+                bottom: 30px;
+                padding: 1.2rem;
+            }
+
+            .hero-text {
+                font-size: 14px;
+            }
+
+            .btn-details {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+                margin: 3rem 0 2rem;
+            }
+
+            .about-section,
+            .services-section,
+            .partners-section,
+            .consultation-section,
+            .contact-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .about-content {
+                font-size: 1rem;
+            }
+
+            .service-card img {
+                height: 200px;
+            }
+
+            .partner-logo {
+                height: 80px;
+                max-width: 150px;
+            }
+
+            .consultation-box {
+                padding: 1.5rem;
+            }
+
+            .btn-consultation {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+
+            .map-container {
+                height: 300px;
+            }
         }
 
+        /* Mobile Portrait (up to 575px) */
+        @media (max-width: 575px) {
+            .navbar-custom {
+                padding: 0.6rem 1rem;
+            }
+
+            .navbar-brand {
+                font-size: 1.3rem;
+            }
+
+            .hero-section {
+                height: 350px;
+                margin-top: 60px;
+            }
+
+            .hero-overlay {
+                max-width: 90%;
+                bottom: 20px;
+                padding: 1rem;
+            }
+
+            .hero-text {
+                font-size: 12px;
+                line-height: 1.3;
+            }
+
+            .btn-details {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin: 2.5rem 0 1.5rem;
+            }
+
+            .about-section,
+            .services-section,
+            .partners-section,
+            .consultation-section,
+            .contact-section {
+                padding: 2.5rem 1rem;
+            }
+
+            .about-content {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            .service-card img {
+                height: 180px;
+            }
+
+            .service-card-body {
+                padding: 1rem;
+            }
+
+            .partner-logo {
+                height: 60px;
+                max-width: 120px;
+                margin: 0.5rem auto;
+            }
+
+            .consultation-box {
+                padding: 1.2rem;
+            }
+
+            .consultation-box h3 {
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+
+            .consultation-box p {
+                font-size: 0.9rem;
+            }
+
+            .btn-consultation {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .contact-info,
+            .message-form {
+                padding: 1.5rem;
+            }
+
+            .contact-item {
+                margin-bottom: 1rem;
+            }
+
+            .map-container {
+                height: 250px;
+            }
+
+            .footer {
+                padding: 1.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Extra Small Mobile (up to 375px) */
+        @media (max-width: 375px) {
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+
+            .hero-text {
+                font-size: 11px;
+            }
+
+            .btn-details {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .consultation-box h3 {
+                font-size: 1.2rem;
+            }
+        }
     </style>
     @yield('styles')
 </head>
@@ -424,8 +720,8 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ route('home') }}">klug</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="{{ route('home') }}">KLUG</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -446,7 +742,7 @@
                         <a class="nav-link {{ Request::routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Hubungi Kami</a>
                     </li>
                 </ul>
-                <form action="{{ route('search') }}" method="GET" class="d-flex align-items-center">
+                <form action="{{ route('search') }}" method="GET" class="d-flex align-items-center flex-column flex-lg-row w-100 w-lg-auto">
                     <div class="search-box">
                         <input type="text" name="q" class="form-control" placeholder="Ketik pencarian">
                         <i class="fas fa-search"></i>
@@ -463,21 +759,32 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p class="mb-0">&copy; {{ date('Y') 
-                }} KLUG - Konsultan Pendidikan Luar Negeri. All Rights Reserved.</p>
+            <p class="mb-0">&copy; {{ date('Y') }} KLUG - Konsultan Pendidikan Luar Negeri. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-    // Efek navbar mengecil & transparan saat di-scroll
-    window.addEventListener("scroll", function() {
-        const navbar = document.querySelector(".navbar-custom");
-        if (window.scrollY > 60) {
-            navbar.classList.add("shrink");
-        } else {
-            navbar.classList.remove("shrink");
-        }
+        // Navbar shrink on scroll
+        window.addEventListener("scroll", function() {
+            const navbar = document.querySelector(".navbar-custom");
+            if (window.scrollY > 60) {
+                navbar.classList.add("shrink");
+            } else {
+                navbar.classList.remove("shrink");
+            }
+        });
+
+        // Close navbar when clicking outside
+        document.addEventListener('click', function(event) {
+            const navbar = document.querySelector('.navbar-collapse');
+            const toggler = document.querySelector('.navbar-toggler');
+            const isClickInsideNavbar = navbar.contains(event.target);
+            const isClickOnToggler = toggler.contains(event.target);
+            
+            if (!isClickInsideNavbar && !isClickOnToggler && navbar.classList.contains('show')) {
+                toggler.click();
+            }
         });
     </script>
 
