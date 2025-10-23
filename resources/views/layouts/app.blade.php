@@ -321,7 +321,8 @@
             border-radius: 6px;
             overflow: hidden;
             height: 270px;
-            width: 360px;
+            width: 100%;
+            max-width: 360px;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             
