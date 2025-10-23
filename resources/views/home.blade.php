@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Home - KLUG')
+@section('title', 'Home - Inaklug')
 
 @section('content')
 <!-- Hero Section -->
@@ -20,9 +20,9 @@
         <h2 class="section-title">Tentang Kami</h2>
         <div class="about-content">
             <p>
-                INAKLUG adalah konsultan Pendidikan Internasional di Indonesia yang sudah 
+                INAKLUG adalah konsultan Pendidikan Internasional di Indonesia yang sudah <br> 
                 memberangkatkan lebih dari 3000 mahasiswa Indonesia yang ingin kuliah, perjalanan 
-                wisata dan berkarir di negara maju di dunia.
+                wisata <br> dan berkarir di negara maju di dunia.
             </p>
         </div>
     </div>
@@ -32,14 +32,15 @@
 <section class="services-section">
     <div class="container">
         <h2 class="section-title">Layanan Kami</h2>
-        <div class="row">
+        <div class="row g-4">
             @foreach($services as $service)
-            <div class="col-12 col-sm-6 col-md-4 mb-4">
+            <div class="col-12 col-sm-6 col-lg-4">
                 <div class="service-card">
-                    <img src="{{ asset('images/' . $service['image']) }}" alt="{{ $service['title'] }}">
-                    <div class="service-card-body">
-                        <h5>{{ $service['title'] }}</h5>
-                        <p>{{ $service['description'] }}</p>
+                    <div class="service-image-wrapper">
+                        <img src="{{ asset('images/' . $service['image']) }}" alt="{{ $service['title'] }}" class="service-image">
+                        <div class="service-overlay">
+                            <h3 class="service-title">{{ $service['title'] }}</h3>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -55,154 +56,128 @@
         <div class="row justify-content-center align-items-center">
             @foreach($partners as $partner)
             <div class="col-6 col-sm-4 col-md-3 text-center mb-3">
-                <img src="{{ asset('images/partners/' . $partner['logo']) }}" 
-                     alt="{{ $partner['name'] }}" 
-                     class="partner-logo">
+                <div class="partner-card-item">
+                    <img src="{{ asset('images/' . $partner['logo']) }}" 
+                        alt="{{ $partner['name'] }}" 
+                        class="partner-logo">
+                </div>
             </div>
             @endforeach
         </div>
     </div>
 </section>
 
-<!-- Free Consultation Section -->
-<section class="consultation-section">
+<<section class="consultation-section">
     <div class="container">
-        <div class="consultation-box">
-            <h3>Gratis Konseling</h3>
-            <p class="mb-4">
-                Dapatkan konsultasi gratis dengan tim ahli kami untuk merencanakan 
-                masa depan pendidikan Anda di luar negeri. Kami siap membantu Anda 
-                menemukan universitas dan program studi yang tepat sesuai dengan 
-                minat dan tujuan karir Anda.
+        <div class="row align-items-center consultation-banner-content">
+            <div class="col-12 col-lg-9 text-start">
+                <h3 class="banner-title">GRATIS KONSELING STUDI DI LUAR NEGERI</h3>
+                <p class="banner-subtitle mb-0">
+                    Konsultasi Seputar Kuliah/Bekerja Di Luar Negeri
+                </p>
+            </div>
+            
+            <div class="col-12 col-lg-3 text-lg-end text-center mt-3 mt-lg-0">
+                <a href="{{ route('register') }}" class="btn btn-start-consultation">
+                    MULAI KONSULTASI <i class="fas fa-chevron-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+     </div>
+</section>
+
+<!-- Konten lainnya -->
+<section class="latest-articles-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="article-section-title">ARTIKEL TERBARU</h2>
+                <div class="title-divider mb-5"></div>
+            </div>
+        </div>
+
+        <div class="row g-4 justify-content-center mb-4">
+            
+            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                <a href="#" class="article-card-link">
+                    <div class="article-card">
+                        <img src="{{ asset('images/studijerman.png') }}" alt="Gadis meditasi di danau" class="article-image">
+                        <p class="article-title">5 Fakta yang Harus Kamu Ketahui Sebelum Studi ke Jerman</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                <a href="#" class="article-card-link">
+                    <div class="article-card">
+                        <img src="{{ asset('images/korona.png') }}" alt="Taman vertikal modern" class="article-image">
+                        <p class="article-title">Uni Eropa Menghadapi Virus Korona</p>
+                    </div>
+                </a>
+            </div>
+            <div class="row g-4 justify-content-center">
+            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                <a href="#" class="article-card-link">
+                    <div class="article-card">
+                        <img src="{{ asset('images/bahasajerman.png') }}" alt="Pemandangan gunung bersalju saat matahari terbit" class="article-image">
+                        <p class="article-title">Belajar Bahasa Jerman Bersama Goethe Insistut</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                <a href="#" class="article-card-link">
+                    <div class="article-card">
+                        <img src="{{ asset('images/gatescambride.png') }}" alt="Siluet orang berjalan di pantai saat matahari terbenam" class="article-image">
+                        <p class="article-title">Apa Itu Gates Cambridge? Yuk Cari Tahu</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <a href="{{ route('articles') }}" class="btn-more-articles">
+                    LAINNYA
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact-section text-center py-5">
+    <div class="container">
+        <h2 class="contact-title mb-5">Hubungi Kami</h2>
+
+        <div class="office-info mb-5">
+            <h3 class="office-title">Kantor Pusat</h3>
+            <p class="office-address mb-1">
+                Gedung Ir. H. M. Suseno - Jl. R.P Soeroso No.6, Menteng, Jakarta Pusat
             </p>
-            <a href="{{ route('register') }}" class="btn btn-consultation">
-                DAFTAR SEKARANG <i class="fas fa-arrow-right ms-2"></i>
+            <p class="office-phone">
+                Phone: 085286754052
+            </p>
+        </div>
+
+        <div class="action-buttons d-flex flex-column flex-sm-row justify-content-center gap-3">
+            
+            <a href="#" class="btn btn-lokasi">
+                LOKASI KAMI
+            </a>
+
+            <a href="#" class="btn btn-kirim-pesan">
+                KIRIM PESAN
             </a>
         </div>
     </div>
 </section>
 
-<!-- Contact Section -->
-<section class="contact-section">
-    <div class="container">
-        <h2 class="section-title">Hubungi Kami</h2>
-        
-        <div class="row">
-            <div class="col-12 col-lg-6 mb-4 mb-lg-0">
-                <div class="contact-info">
-                    <h4>Informasi Kontak</h4>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <strong>Alamat:</strong><br>
-                            Jl. Sudirman No. 123, Jakarta Pusat<br>
-                            DKI Jakarta 10220, Indonesia
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <strong>Telepon:</strong><br>
-                            +62 21 1234 5678
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <strong>Email:</strong><br>
-                            info@klug.co.id
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <strong>Jam Operasional:</strong><br>
-                            Senin - Jumat: 09:00 - 17:00<br>
-                            Sabtu: 09:00 - 13:00
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-12 col-lg-6">
-                <div class="message-form">
-                    <h4 class="mb-4" style="color: var(--primary-purple);">Kirim Pesan</h4>
-                    @if(session('success'))
-                    <div class="alert alert-success">{{ session('success') }}</div>
-                    @endif
-                    
-                    <form action="{{ route('contact.store') }}" method="POST">
-                        @csrf
-                        <input type="text" name="name" class="form-control" placeholder="Nama Lengkap" required>
-                        <input type="email" name="email" class="form-control" placeholder="Email" required>
-                        <input type="text" name="phone" class="form-control" placeholder="No. Telepon" required>
-                        <textarea name="message" class="form-control" rows="5" placeholder="Pesan Anda" required></textarea>
-                        <button type="submit" class="btn btn-send">
-                            KIRIM PESAN <i class="fas fa-paper-plane ms-2"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
+@endsection
 
-        <!-- Map Section -->
-        <div class="row mt-5">
-            <div class="col-12">
-                <h4 class="text-center mb-4" style="color: var(--primary-purple);">Lokasi Kami</h4>
-                <div class="map-container">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.666397707426!2d106.8229296!3d-6.1753924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f436b8c94b07%3A0x6ea6d5398b7c82f6!2sJl.%20Sudirman%2C%20Jakarta!5e0!3m2!1sen!2sid!4v1234567890" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/home.css') }}">
 @endsection
 
 @section('scripts')
-<script>
-    // Smooth scroll to about section when clicking details button
-    document.querySelector('.btn-details').addEventListener('click', function() {
-        document.querySelector('.about-section').scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-        });
-    });
-
-    // Auto-close navbar on mobile when clicking a link
-    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
-        link.addEventListener('click', function() {
-            const navbarCollapse = document.querySelector('.navbar-collapse');
-            const navbarToggler = document.querySelector('.navbar-toggler');
-            
-            if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
-                navbarToggler.click();
-            }
-        });
-    });
-
-    // Lazy loading for images
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.classList.add('loaded');
-                    observer.unobserve(img);
-                }
-            });
-        });
-
-        document.querySelectorAll('img').forEach(img => {
-            imageObserver.observe(img);
-        });
-    }
-</script>
+<script src="{{ asset('js/home.js') }}"></script>
 @endsection

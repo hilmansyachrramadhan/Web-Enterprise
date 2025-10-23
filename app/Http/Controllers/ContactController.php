@@ -3,27 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Contact;
 
 class ContactController extends Controller
 {
+    // Menampilkan halaman form kontak
     public function index()
     {
-        return view('contact');
+        return view('posts.contact');
     }
 
+    // Menangani data dari form kontak
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:20',
-            'message' => 'required|string'
+        $request->validate([
+            'nama' => 'required|min:3',
+            'email' => 'required|email',
+            'pesan' => 'required|min:10'
         ]);
 
-        // Save to database or send email
-        // Contact::create($validated);
+        // Di sini kamu bisa menambahkan logika seperti:
+        // - menyimpan ke database
+        // - mengirim email notifikasi
+        // Sementara kita hanya menampilkan pesan sukses
 
-        return redirect()->back()->with('success', 'Pesan Anda telah terkirim!');
+        return back()->with('success', 'Pesan Anda berhasil dikirim! Kami akan segera menghubungi Anda.');
     }
 }

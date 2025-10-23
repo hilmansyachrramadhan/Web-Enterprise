@@ -10,42 +10,42 @@ class HomeController extends Controller
     {
         $services = [
             [
-                'title' => 'Konsultasi Pendidikan',
+                'title' => 'Studi S1 - Bachelor',
                 'description' => 'Layanan konsultasi untuk pendidikan di luar negeri',
-                'image' => 'service1.jpg'
+                'image' => 'bachelor.png'
             ],
             [
-                'title' => 'Visa & Imigrasi',
+                'title' => 'Studi S2 Master',
                 'description' => 'Bantuan pengurusan visa dan dokumen imigrasi',
-                'image' => 'service2.jpg'
+                'image' => 'master.png'
             ],
             [
-                'title' => 'Pengurusan Beasiswa',
+                'title' => 'Studi S3 - Ph.D',
                 'description' => 'Membantu mendapatkan beasiswa studi',
-                'image' => 'service3.jpg'
+                'image' => 'phd.jpg'
             ],
             [
-                'title' => 'Persiapan Tes',
+                'title' => 'Kursus Bahasa Asing',
                 'description' => 'Persiapan IELTS, TOEFL, dan tes lainnya',
-                'image' => 'service4.jpg'
+                'image' => 'kursus.png'
             ],
             [
-                'title' => 'Akomodasi',
+                'title' => 'Study Tour',
                 'description' => 'Bantuan mencari tempat tinggal',
-                'image' => 'service5.jpg'
+                'image' => 'studytour.png'
             ],
             [
-                'title' => 'Career Counseling',
+                'title' => 'Ausbildung',
                 'description' => 'Konseling karir dan perencanaan masa depan',
-                'image' => 'service6.jpg'
+                'image' => 'ausbildung.jpg'
             ]
         ];
 
         $partners = [
-            ['name' => 'Partner 1', 'logo' => 'partner1.png'],
-            ['name' => 'Partner 2', 'logo' => 'partner2.png'],
-            ['name' => 'Partner 3', 'logo' => 'partner3.png'],
-            ['name' => 'Partner 4', 'logo' => 'partner4.png']
+            ['name' => 'aviation', 'logo' => 'aviation.jpg'],
+            ['name' => 'adrew', 'logo' => 'adrew.png'],
+            ['name' => 'Partner 3', 'logo' => 'htw.png'],
+            ['name' => 'Partner 4', 'logo' => 'studygroup.png']
         ];
 
         return view('home', compact('services', 'partners'));
