@@ -140,17 +140,22 @@
         .search-box {
             position: relative;
             margin-right: 4rem;
+            margin-left: 2rem;
         }
 
         .search-box input {
             background:none;
-            color: none;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            color: ;
             padding: 0.5rem 2.5rem 0.5rem 1rem;
-            border-radius: 12px;
-            width: 250px;
+            padding-left: 2rem;
+            border-radius: 0px;
+            width: 200px;
             transition: all 0.3s;
             font-family: 'Ubuntu', sans-serif;
             font-size: 13px;
+            
         }
 
         .search-box input::placeholder {
@@ -159,16 +164,17 @@
 
         .search-box input:focus {
             background: rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.9);
             outline: none;
             border-color: white;
         }
 
         .search-box i {
             position: absolute;
-            right: 15px;
+            left: 0px;
             top: 50%;
             transform: translateY(-50%);
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.53);
             pointer-events: none;
         }
 
@@ -748,7 +754,12 @@
             }
 
             .navbar-collapse {
-                background: linear-gradient(180deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+                background: linear-gradient(
+                180deg,
+                rgba(177, 101, 187, 0.46) 0%,   /* warna ungu, 80% opasitas */
+                rgba(25, 123, 208, 0.45) 80% /* warna biru, 80% opasitas */
+            );
+                opacity: 0.85;
                 padding: 1.5rem;
                 margin-top: 1rem;
                 border-radius: 10px;
