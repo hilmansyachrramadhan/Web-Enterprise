@@ -233,38 +233,39 @@
 
         .hero-overlay {
             position: absolute;
-            max-width: 621px;
-            width: 90%;
+            width: 621px; 
+            height: 120px; 
             bottom: 80px;
-            left: 50px; /* dari sisi kiri layar */
-            /* HAPUS transform: translateX(-50%); karena kita tidak mau center lagi */
+            left: 50px; 
             background: linear-gradient(90deg, rgba(70, 7, 78, 0.9) 0%, rgba(25, 123, 208, 0.9) 100%);
-            border-radius: 6px;
-            padding: 2rem 3rem;
+            border-radius: 0x;
+            padding: 1rem 2rem;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
             box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
-            gap: 2rem;
+            gap: 1rem;
         }
 
         .hero-text {
-            color: #fff;
-            font-size: 20px;
-            font-weight: 700;
+            color: #ffffffff;
+            font-size: 15px !important;
             letter-spacing: 1px;
             margin: 0;
             line-height: 1.4;
             text-align: left;
+            position: relative;
+            top: 10px;
+            transform: translateY(10%);
         }
 
         .btn-details {
             background: transparent;
-            border: 2px solid #fff;
+            border: 1px solid #fff;
             color: #fff;
             padding: 0.8rem 2rem;
             border-radius: 50px;
-            font-size: 1rem;
+            font-size: 15px;
             font-weight: 500;
             letter-spacing: 0.5px;
             transition: all 0.3s ease;

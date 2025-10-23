@@ -7,7 +7,7 @@
 <section class="hero-section">
     <img src="{{ asset('images/assetbuilding.png') }}" alt="Building" class="hero-image">
     <div class="hero-overlay">
-        <h1 class="hero-text">INGIN KULIAH DAN BERKARIR<br>DI LUAR NEGERI?</h1>
+        <h1 class="hero-text">INGIN KULIAH DAN BERKARIR <br> DI LUAR NEGERI?</h1>
         <button class="btn btn-details">
             SELENGKAPNYA <i class="fas fa-chevron-down ms-2"></i>
         </button>
