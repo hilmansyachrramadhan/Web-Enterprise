@@ -1,25 +1,20 @@
 @extends('layouts.app')
 
-@section('title', 'Tentang Kami')
+@section('title', 'Artikel Kami')
 
 @section('content')
 <style>
-    /* * PENTING: Jika Anda menggunakan framework CSS seperti Tailwind/Bootstrap
-     * di 'layouts.app', Anda mungkin perlu menyesuaikan margin-top dan layout.
-     * Kode ini disetel untuk lingkungan vanilla CSS.
-     */
     body {
         margin: 0;
         font-family: 'Inter', sans-serif;
         background-color: #f4f4f4;
     }
 
-    /* --- HERO SECTION STYLES --- */
     .hero-layanan-section {
         position: relative;
-        height: 450px; /* Ketinggian hero disesuaikan */
+        height: 450px;
         overflow: hidden;
-        margin-top: -65px; /* Menarik bagian ini ke atas, jika ada header tetap (fixed header) */
+        margin-top: -65px;
         z-index: 1; 
         width: 100%;
     }
@@ -28,7 +23,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        filter: brightness(70%); /* Meredupkan gambar */
+        filter: brightness(70%); 
     }
 
     .hero-layanan-overlay {
@@ -37,26 +32,22 @@
         right: 0;
         bottom: 0;
         left: 0;
-        /* Gradient Ungu (Disesuaikan agar lebih halus) */
         background: linear-gradient(to right, #46074E 0%, rgba(34, 138, 223, 0.7) 30%, transparent 80%);
         display: flex;
-        align-items: flex-end; /* Menempatkan konten di bagian bawah */
-        /* Padding horizontal untuk tepi */
+        align-items: flex-end;
         padding-left: 5%; 
         padding-right: 5%;
     }
 
     .hero-layanan-content h1 {
         color: white; 
-        font-size: 1.5rem; /* Ukuran font lebih besar untuk Hero */
-        margin-bottom: 25px; /* DINAJUKKAN: Mengangkat teks 25px dari tepi bawah overlay */
+        font-size: 1.5rem;
+        margin-bottom: 25px;
         margin-top: 0; 
         font-weight: 700;
-        /* Pastikan teks tidak terlalu jauh dari kiri */
         text-align: left; 
     }
 
-    /* --- ISI KONTEN UTAMA --- */
     .content-container {
         max-width: 1200px;
         margin: 40px auto;
@@ -106,7 +97,7 @@
 
     .visi-misi-card h3 {
         font-size: 1.5rem;
-        color: #581c87; /* Warna ungu */
+        color: #581c87;
         margin-bottom: 15px;
         font-weight: 600;
         margin-left: 80px;
@@ -118,10 +109,9 @@
         margin-left: 80px;
     }
 
-    /* Responsif untuk tablet dan mobile */
     @media (max-width: 900px) {
         .visi-misi-grid {
-            grid-template-columns: 1fr; /* Kolom tunggal di tablet/mobile */
+            grid-template-columns: 1fr; 
         }
         .image-gallery {
             flex-direction: column;
@@ -146,9 +136,8 @@
     }
 </style>
 
-<!-- HERO SECTION -->
+
 <section class="hero-layanan-section">
-    <!-- Gambar akan diambil dari folder public/images Laravel -->
     <img src="{{ asset('images/gatescambride.png') }}" 
          alt="Bangunan Tua Latar Belakang" 
          class="hero-layanan-image" 
@@ -161,7 +150,7 @@
     </div>
 </section>
 
-<!-- Services Section -->
+
 <section class="services-section">
     <div class="container">
         <h2 class="section-title">Layanan Kami</h2>

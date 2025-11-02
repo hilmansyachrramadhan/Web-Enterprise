@@ -34,7 +34,7 @@
         right: 0;
         bottom: 0;
         left: 0;
-        background: linear-gradient(to right, #46074E 0%, rgba(34, 138, 223, 0.7) 30%, transparent 80%);
+        background: linear-gradient(to right, #793c81ff , transparent 30%);
         display: flex;
         align-items: flex-end; 
         padding-left: 5%; 
@@ -91,29 +91,29 @@
         object-fit: cover;
     }
 
-    .visi-misi-grid {
+    .Desc-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        margin-top: 50px;
+        margin-top: 30px;
     }
 
-    .visi-misi-card h3 {
-        font-size: 1.5rem;
-        color: #581c87; /* Warna ungu */
-        margin-bottom: 15px;
+    .Desc-card h3 {
+        font-size: 1rem;
+        color: #2c2b2dff;
         font-weight: 600;
-        margin-left: 80px;
+        margin-left: 10rem;
         font: justify;
+        margin-bottom: 80px;
     }
 
-    .visi-misi-card p {
+    .Desc-card p {
         color: #555;
         line-height: 1.6;
         margin-left: 80px;
     }
 
     @media (max-width: 900px) {
-        .visi-misi-grid {
+        .Desc-grid {
             grid-template-columns: 1fr; 
         }
         .image-gallery {
@@ -141,47 +141,35 @@
 
 <!-- HERO SECTION -->
 <section class="hero-layanan-section">
-    <img src="{{ asset('images/studytour.png') }}" 
-         alt="Bangunan Tua Latar Belakang" 
+    <img src="{{ asset('images/article.jpeg') }}" 
          class="hero-layanan-image" 
          onerror="this.onerror=null;this.src='https://placehold.co/1200x350/581C87/FFFFFF?text=Latar+Belakang';"> 
 
     <div class="hero-layanan-overlay">
         <div class="hero-layanan-content">
-            <h1>TENTANG KAMI</h1>
+            <h1>Tips
+                <br> Penting! Cara Mudah agar Bisa Kuliah Keluar Negeri
+                <br> dengan Beasiswa
+            </h1>
         </div>
     </div>
 </section>
 
 <!-- KONTEN UTAMA HALAMAN -->
-<div class="content-container">
-
-    <section class="profil-section">
-        <h2>Profil</h2>
-        <p>
-            Didirikan pada tahun 2018, Ini membuktikan bahwa INAKLUG merupakan konsultan pendidikan internasional <br> yang berpengalaman, terbesar, terpercaya dan juga memiliki jam terbang tinggi untuk melayani para anak-anak <br> muda Indonesia untuk menuntut ilmu di berbagai negara maju dunia.
-        </p>
-        
+<div class="content-container">   
         <div class="image-gallery">
-
-            <img src="{{ asset('images/visi.png') }}" alt="Siswa sedang belajar dan menunjuk papan">
-            <img src="{{ asset('images/misi.png') }}" alt="Siswa menggunakan kacamata Virtual Reality">
+            <img src="{{ asset('images/korona.png') }}" alt="Siswa sedang belajar dan menunjuk papan">
+            <img src="{{ asset('images/htw.png') }}" alt="Siswa menggunakan kacamata Virtual Reality">
         </div>
     </section>
 
-    <div class="visi-misi-grid">
-        <section class="visi-misi-card">
-            <h3>Visi</h3>
-            <p>
-                Membangun Sumber Daya Indonesia yang mempunyai daya saing tinggi, tangguh secara internasional untuk menghadapi persaingan di era globalisasi serta membangun karakter pemimpin Indonesia masa depan yang tangguh, mandiri, dan profesional.
-            </p>
+    <div class="Desc-grid">
+        <section class="Desc-card">
+            <h3>Penting! Cara Mudah agar Bisa Kuliah Keluar <br> Negeri dengan Beasiswa</h3>
         </section>
 
-        <section class="visi-misi-card">
-            <h3>Misi</h3>
-            <p>
-                Membangun Sumber Daya Indonesia yang mempunyai daya saing tinggi, tangguh secara internasional untuk menghadapi persaingan di era globalisasi serta membangun karakter pemimpin Indonesia masa depan yang tangguh, mandiri, dan profesional.
-            </p>
+         <section class="Desc-card">
+            <h3>Penting! Cara Mudah agar Bisa Kuliah Keluar <br> Negeri dengan Beasiswa</h3>
         </section>
     </div>
 

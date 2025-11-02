@@ -359,19 +359,17 @@
         }
 
         .service-overlay::before {
-            content: ""; /* Wajib */
+            content: ""; 
             position: absolute;
             
             /* Posisi Garis: Di sebelah kiri dan vertikal di tengah */
             left: 5%; /* Jarak dari tepi kiri Hero Section */
             top: 0%; /* Mulai dari tengah vertikal */
-            transform: translateY(-50%); /* Geser ke atas 50% dari tingginya sendiri untuk senter yang sempurna */
-            
-            /* Dimensi Garis */
-            width: 0.1px; /* Ketebalan garis */
-            height: 400px; /* Ketinggian garis (Tidak sampai bawah) */
-            background-color: white; /* Warna garis */
-            border-radius: 2px; /* Membuat ujung garis sedikit membulat */
+            transform: translateY(-50%); 
+            width: 0.1px; 
+            height: 400px; 
+            background-color: white; 
+            border-radius: 2px; 
         }
 
         .service-title {
@@ -455,7 +453,7 @@
         /* Kotak Gradient (Menggantikan .consultation-box) */
         .consultation-banner-content {
             /* Menerapkan gradient, border-radius, dan shadow langsung ke konten */
-            background: linear-gradient(90deg, var(--gradient-start) 0%, var(--gradient-end) 100%); /* Ubah ke 90deg agar horizontal */
+            background: linear-gradient(90deg, var(--gradient-start) 0%, var(--gradient-end) 80%); /* Ubah ke 90deg agar horizontal */
             border-radius: 6px;
             padding: 2.5rem 3rem; /* Padding internal untuk jarak dari tepi gradient */
             margin-top: 4rem; /* Jarak dari section atas */
@@ -915,6 +913,7 @@
             }
 
             .hero-overlay {
+                position: relative;
                 max-width: 90%;
                 bottom: 20px;
                 padding: 1rem;
