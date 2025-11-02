@@ -8,7 +8,7 @@
     body {
         margin: 0;
         font-family: 'Inter', sans-serif;
-        background-color: #f4f4f4;
+        background-color: #ffffffff;
     }
 
     /* --- HERO SECTION STYLES --- */
@@ -112,6 +112,95 @@
         margin-left: 80px;
     }
 
+    .mitra-title {
+        font-weight: 600;
+        font-size: 24px;
+        margin-top: 40px;
+        margin-bottom: 25px;
+        color: #828282ff;
+        text-align: left;  
+        margin-left: 200px; 
+    }
+
+    .artikel-preview-section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 60px 0; /* Jarak sebelum Hubungi Kami */
+    }
+
+    .artikel-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        max-width: 900px;
+    }
+
+    .artikel-item img {
+        width: 260px;
+        height: 150px;
+        margin-bottom: 20px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .artikel-text {
+        max-width: 500px;
+    }
+
+    .artikel-text h3 {
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+        color: #828282ff;
+    }
+
+    .artikel-text p {
+        color: #828282ff;
+        line-height: 1.6;
+    }
+
+    /* PAGINATION */
+    .artikel-pagination {
+        display: flex;
+        gap: 12px;
+        margin-top: 25px;
+    }
+
+    .artikel-pagination .page {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 1.6px solid #b9b9b9;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: 0.25s;
+    }
+
+    .artikel-pagination .page:hover {
+        transform: scale(1.1);
+    }
+
+    .artikel-pagination .active {
+        background: linear-gradient(to right, #793c81, #4177b5);
+        color: white;
+        border: none;
+    }
+
+    /* Garis bawah */
+    .artikel-divider {
+        width: 100%;
+        max-width: 900px;
+        margin-top: 25px;
+        border: 0;
+        border-top: 1.4px solid #dadada;
+    }
+
+
     @media (max-width: 900px) {
         .Desc-grid {
             grid-template-columns: 1fr; 
@@ -171,11 +260,83 @@
          <section class="Desc-card">
             <h3>Penting! Cara Mudah agar Bisa Kuliah Keluar <br> Negeri dengan Beasiswa</h3>
         </section>
+
+        <hr class="artikel-divider">
+    </div>
+
+    <h3 class="mitra-title">Mitra Kami</h3>
+
+    <div class="artikel-preview-section">
+
+        <div class="artikel-item show">
+            <img src="images/artikel1.jpg" alt="Artikel 1">
+            <div class="artikel-text">
+                <h3>
+                    <br> Penting! Cara Mudah agar Bisa Kuliah Keluar Negeri
+                    <br> dengan Beasiswa
+                </h3>
+                <p>Selasa, 18 Feb 2020 12:01 WIB.</p>
+            </div>
+        </div>
+
+        <div class="artikel-item">
+            <img src="images/artikel2.jpg" alt="Artikel 2">
+            <div class="artikel-text">
+                <h3>
+                    <br> Penting! Cara Mudah agar Bisa Kuliah Keluar Negeri
+                    <br> dengan Beasiswa
+                </h3>
+                <p>Selasa, 18 Feb 2020 12:01 WIB</p>
+            </div>
+        </div>
+
+        <div class="artikel-item">
+            <img src="images/artikel3.jpg" alt="Artikel 3">
+            <div class="artikel-text">
+                <h3>
+                    <br> Penting! Cara Mudah agar Bisa Kuliah Keluar Negeri
+                    <br> dengan Beasiswa</h3>
+                <p>Selasa, 18 Feb 2020 12:01 WIB</p>
+            </div>
+        </div>
+
+        <div class="artikel-item">
+            <img src="images/artikel4.jpg" alt="Artikel 4">
+            <div class="artikel-text">
+                <h3>
+                    <br> Penting! Cara Mudah agar Bisa Kuliah Keluar Negeri
+                    <br> dengan Beasiswa
+                </h3>
+                <p>Selasa, 18 Feb 2020 12:01 WIB</p>
+            </div>
+        </div>
+
+        <div class="artikel-item">
+            <img src="images/nurse2.jpg" alt="Artikel 5">
+            <div class="artikel-text">
+                <h3>
+                    <br> Penting! Cara Mudah agar Bisa Kuliah Keluar Negeri
+                    <br> dengan Beasiswa
+                </h3>
+                <p>Selasa, 18 Feb 2020 12:01 WIB</p>
+            </div>
+        </div>
+
+        <div class="artikel-pagination">
+            <span class="page active" data-index="0">1</span>
+            <span class="page" data-index="1">2</span>
+            <span class="page" data-index="2">3</span>
+            <span class="page" data-index="3">4</span>
+            <span class="page" data-index="4">5</span>
+        </div>
+
+        <hr class="artikel-divider">
+
     </div>
 
     <section class="contact-section text-center py-5">
     <div class="container">
-        <h2 class="contact-title mb-5">Hubungi Kami</h2>
+        <h2 class="contact-title mb-3">Hubungi Kami</h2>
 
         <div class="office-info mb-5">
             <h3 class="office-title">Kantor Pusat</h3>
@@ -199,7 +360,27 @@
         </div>
     </div>
 </section>
-
-
 </div>
+
+<script>
+    const pages = document.querySelectorAll('.page');
+    const items = document.querySelectorAll('.artikel-item');
+
+    pages.forEach(page => {
+        page.addEventListener('click', () => {
+            const index = page.getAttribute('data-index');
+
+            // sembunyikan semua artikel
+            items.forEach(item => item.classList.remove('show'));
+
+            // tampilkan artikel sesuai index
+            items[index].classList.add('show');
+
+            // ubah aktif pagination
+            pages.forEach(p => p.classList.remove('active'));
+            page.classList.add('active');
+        });
+    });
+</script>
+
 @endsection

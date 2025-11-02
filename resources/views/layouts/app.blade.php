@@ -632,10 +632,9 @@
             font-size: 24px;
             font-weight: 700;
             color: #4A4A4A;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
         }
 
-        /* Informasi Kantor */
         .office-info {
             max-width: 600px;
             margin: 0 auto;
