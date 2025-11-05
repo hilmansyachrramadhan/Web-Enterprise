@@ -119,7 +119,7 @@
         margin-bottom: 25px;
         color: #828282ff;
         text-align: left;  
-        margin-left: 200px; 
+        margin-left: 230px; 
     }
 
     .artikel-preview-section {
@@ -127,7 +127,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 60px 0; /* Jarak sebelum Hubungi Kami */
+        margin: 60px 0;
     }
 
     .artikel-item {
@@ -161,7 +161,6 @@
         line-height: 1.6;
     }
 
-    /* PAGINATION */
     .artikel-pagination {
         display: flex;
         gap: 12px;
@@ -190,8 +189,7 @@
         color: white;
         border: none;
     }
-
-    /* Garis bawah */
+    
     .artikel-divider {
         width: 100%;
         max-width: 900px;
@@ -201,29 +199,40 @@
     }
 
 
+  /* --- SECTION BARU DI BAWAH DIVIDER --- */
+    .contact-extra-section {
+        margin-top: 30px;
+        text-align: left;
+    }
+
+    .contact-extra-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #2b2b2b;
+        margin-bottom: 15px;
+    }
+
+    .contact-extra-desc {
+        color: #555;
+        line-height: 1.6;
+    }
+
+    /* ✅ RESPONSIVE */
     @media (max-width: 900px) {
-        .Desc-grid {
-            grid-template-columns: 1fr; 
-        }
-        .image-gallery {
-            flex-direction: column;
-        }
-        .image-gallery img {
-            width: 100%;
-        }
-        .hero-layanan-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+        .captcha-submit {
+            justify-content: center;
         }
     }
 
     @media (max-width: 600px) {
-        .content-container {
-            margin: 20px auto;
-            padding: 0 10px;
-        }
         .hero-layanan-content h1 {
-            font-size: 2rem;
+            font-size: 1.2rem;
+        }
+        .contact-extra-title {
+            font-size: 1.2rem;
+        }
+        .contact-extra-desc {
+            font-size: 0.95rem;
         }
     }
 </style>

@@ -20,6 +20,15 @@
         object-fit: cover;
         filter: brightness(70%); 
     }
+    
+    .hero-layanan-content h1 {
+        color: white; 
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+        margin-top: 0; 
+        font-weight: 700;
+        text-align: left; 
+    }
 
     .hero-layanan-overlay {
         position: absolute;
@@ -65,6 +74,105 @@
                         linear-gradient(90deg, #6a1b9a, #42a5f5);
         color: #1a4f7a;
     }
+
+    .captcha-submit {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center; 
+        gap: 15rem; 
+        margin-top: 20px;
+    }
+
+    .divider-contact {
+        width: 100%;
+        max-width: 900px;
+        margin-top: 25px;
+        border: 0;
+        border-top: 1.4px solid #dadada;
+    }
+
+    .location-wrap {
+        margin-top: 15px;
+        margin-left: 250px;
+        max-width: 700px; 
+        color: #7d7d7dff;
+    }
+
+    .lokasi-title {
+        font-weight: 600;
+        font-size: 1rem;
+        margin-bottom: 25px;
+        text-align: left;
+    }
+
+    .lokasi-item {
+        margin-bottom: 30px;
+    }
+
+    .lokasi-item h5 {
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+    .lokasi-item p {
+        margin: 3px 0;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #444;
+    }
+
+    /* --- RESPONSIVE CONTACT PAGE --- */
+
+    @media (max-width: 900px) {
+
+        .hero-layanan-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .captcha-submit {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px; /* dulu 15rem jadi wajar di mobile */
+        }
+
+        .gradient-btn {
+            width: 100%; /* tombol melebar rapi */
+            text-align: center;
+        }
+
+        .location-wrap {
+            margin-left: 40px;
+            max-width: 90%;
+        }
+    }
+
+    @media (max-width: 600px) {
+
+        .container {
+            padding: 0 10px;
+        }
+
+        .hero-layanan-content h1 {
+            font-size: 2rem;
+        }
+
+        .captcha-submit {
+            align-items: center; 
+            text-align: center;
+            width: 100%;
+        }
+
+        .gradient-btn {
+            width: 100%;
+        }
+
+        .location-wrap {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+    }
+
 </style>
 
 <section class="hero-layanan-section">
@@ -117,18 +225,42 @@
             <textarea name="message" class="form-control" rows="5" required placeholder="Isi Pesan*"></textarea>
         </div>
 
-        {{-- ✅ Google reCAPTCHA --}}
-        {!! NoCaptcha::display() !!}
-        @if ($errors->has('g-recaptcha-response'))
-            <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
-        @endif
+        <div class="captcha-submit">
+            <div>
+                {!! NoCaptcha::display() !!}
+                @if ($errors->has('g-recaptcha-response'))
+                    <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+                @endif
+            </div>
 
-        <div class="massage">
             <button class="gradient-btn" type="submit">KIRIM PESAN</button>
         </div>
+
     </form>
 
+    <hr class="divider-contact">
+
 </div>
+
+<section class="location-wrap">
+    <h3 class="lokasi-title">LOKASI KAMI</h3>
+
+    <div class="lokasi-item">
+        <h5>Kantor Pusat</h5>
+        <p>Gedung Ir. H. M. Suseno - JL. R.P Soeroso No.6, Menteng, Jakarta Pusat</p>
+        <p>Phone: (6285) 286754052 - Fax: (6285) 286754052</p>
+        <p>Hotline: +6285286754052 / +6285286754052</p>
+    </div>
+
+    <div class="lokasi-item">
+        <h5>Kantor Cabang</h5>
+        <p>Gedung Ir. H. M. Suseno - JL. R.P Soeroso No.6, Menteng, Jakarta Pusat</p>
+        <p>Phone: (6285) 286754052 - Fax: (6285) 286754052</p>
+        <p>Hotline: +6285286754052 / +6285286754052</p>
+    </div>
+</section>
+
+
 
 {{-- ✅ Load JS --}}
 {!! NoCaptcha::renderJs() !!}
