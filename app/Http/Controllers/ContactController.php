@@ -3,29 +3,41 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Contact; // ← Tambahkan ini
+use Illuminate\Support\Facades\Mail; // ← Tambahkan ini
+use App\Mail\ContactMail; // ← Tambahkan ini
 
 class ContactController extends Controller
 {
-    // Menampilkan halaman form kontak
     public function index()
     {
         return view('posts.contact');
     }
 
-    // Menangani data dari form kontak
-    public function store(Request $request)
+    public function send(Request $request)
     {
         $request->validate([
-            'nama' => 'required|min:3',
+            'name' => 'required',
             'email' => 'required|email',
-            'pesan' => 'required|min:10'
+            'company' => 'nullable',
+            'phone' => 'nullable',
+            'message' => 'required',
+            'g-recaptcha-response' => 'required|captcha'
         ]);
 
-        // Di sini kamu bisa menambahkan logika seperti:
-        // - menyimpan ke database
-        // - mengirim email notifikasi
-        // Sementara kita hanya menampilkan pesan sukses
+        // Simpan data ke database
+        Contact::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'company' => $request->company,
+            'phone' => $request->phone,
+            'message' => $request->message,
+        ]);
 
-        return back()->with('success', 'Pesan Anda berhasil dikirim! Kami akan segera menghubungi Anda.');
+        // Kirim email ke admin
+        Mail::to('hilmansyachrramadhan@gmail.com')->send(new ContactMail($request));
+
+        // Redirect dengan pesan sukses
+        return redirect()->back()->with('success', 'Pesan berhasil dikirim. Terima kasih!');
     }
 }

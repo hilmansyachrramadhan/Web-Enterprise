@@ -152,7 +152,7 @@
 
     .artikel-text h3 {
         margin-bottom: 10px;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         color: #828282ff;
     }
 

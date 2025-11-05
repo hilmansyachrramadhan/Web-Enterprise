@@ -3,142 +3,135 @@
 @section('title', 'Hubungi Kami')
 
 @section('content')
-    <div class="contact-section">
-        <div class="container">
-            <h1 class="contact-title">Hubungi Kami</h1>
-            <p class="contact-subtitle">Silakan isi form di bawah untuk menghubungi kami.</p>
 
-            @if (session('success'))
-                <div class="alert-success">{{ session('success') }}</div>
-            @endif
-
-            <form action="{{ route('contact.store') }}" method="POST" class="contact-form">
-                @csrf
-                <div class="form-group">
-                    <label for="nama">Nama Lengkap</label>
-                    <input type="text" id="nama" name="nama" value="{{ old('nama') }}" required>
-                    @error('nama')
-                        <small class="error">{{ $message }}</small>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Alamat Email</label>
-                    <input type="email" id="email" name="email" value="{{ old('email') }}" required>
-                    @error('email')
-                        <small class="error">{{ $message }}</small>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="pesan">Pesan</label>
-                    <textarea id="pesan" name="pesan" rows="5" required>{{ old('pesan') }}</textarea>
-                    @error('pesan')
-                        <small class="error">{{ $message }}</small>
-                    @enderror
-                </div>
-
-                <button type="submit" class="btn-submit">Kirim Pesan</button>
-            </form>
-        </div>
-    </div>
-@endsection
-
-@push('styles')
 <style>
-    /* Section utama */
-    .contact-section {
-        padding: 80px 0;
-        background-color: #f9f9f9;
-        min-height: 100vh;
+    .hero-layanan-section {
+        position: relative;
+        height: 450px; 
+        overflow: hidden;
+        margin-top: -65px; 
+        z-index: 1; 
+        width: 100%;
+    }
+
+    .hero-layanan-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(70%); 
+    }
+
+    .hero-layanan-overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(to right, #793c81ff , transparent 30%);
+        display: flex;
+        align-items: flex-end; 
+        padding-left: 5%; 
+        padding-right: 5%;
     }
 
     .container {
-        width: 90%;
-        max-width: 600px;
-        margin: 0 auto;
+        max-width: 800px;
     }
 
-    .contact-title {
-        text-align: center;
-        font-size: 36px;
-        font-weight: 700;
-        color: #333;
-        margin-bottom: 10px;
+    .massage {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
     }
 
-    .contact-subtitle {
-        text-align: center;
+    .gradient-btn {
+        padding: 12px 45px;
+        border-radius: 50px;
+        font-weight: 600;
         font-size: 16px;
-        color: #666;
-        margin-bottom: 40px;
-    }
-
-    /* Form styling */
-    .contact-form {
         background: #fff;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .form-group {
-        margin-bottom: 20px;
-    }
-
-    label {
-        display: block;
-        font-weight: 600;
-        color: #333;
-        margin-bottom: 6px;
-    }
-
-    input,
-    textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 15px;
-        outline: none;
-        transition: border 0.3s ease;
-    }
-
-    input:focus,
-    textarea:focus {
-        border-color: #1a73e8;
-    }
-
-    .btn-submit {
-        width: 100%;
-        padding: 12px;
-        background-color: #1a73e8;
-        color: #fff;
-        font-size: 16px;
-        border: none;
-        border-radius: 6px;
+        color: #23527c;
+        border: 2px solid transparent;
+        background-image: linear-gradient(#fff, #fff),
+                        linear-gradient(90deg, #6a1b9a, #42a5f5);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        transition: 0.3s;
         cursor: pointer;
-        transition: background 0.3s ease;
-        font-weight: 600;
     }
 
-    .btn-submit:hover {
-        background-color: #1257b7;
-    }
-
-    .alert-success {
-        background: #e6f9ec;
-        color: #2e7d32;
-        border: 1px solid #b2dfdb;
-        padding: 10px 15px;
-        border-radius: 6px;
-        margin-bottom: 20px;
-        text-align: center;
-    }
-
-    .error {
-        color: #d32f2f;
-        font-size: 13px;
+    .gradient-btn:hover {
+        background-image: linear-gradient(#e3f2fd, #e3f2fd),
+                        linear-gradient(90deg, #6a1b9a, #42a5f5);
+        color: #1a4f7a;
     }
 </style>
-@endpush
+
+<section class="hero-layanan-section">
+    <img src="{{ asset('images/becak.png') }}" class="hero-layanan-image">
+
+    <div class="hero-layanan-overlay">
+        <div class="hero-layanan-content">
+            <h1>HUBUNGI KAMI</h1>
+        </div>
+    </div>
+</section>
+
+<div class="container py-5">
+
+    <h3>KIRIM PESAN</h3>
+
+    @if(session('success'))
+        <div class="alert alert-success text-center">{{ session('success') }}</div>
+    @endif
+
+    <form action="{{ route('contact.send') }}" method="POST">
+        @csrf
+
+        <div class="row mb-3">
+            <div class="col">
+                <label>Nama*</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+
+            <div class="col">
+                <label>Email*</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <label>Perusahaan/Organisasi</label>
+                <input type="text" name="company" class="form-control">
+            </div>
+
+            <div class="col">
+                <label>Telepon</label>
+                <input type="text" name="phone" class="form-control">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label>Isi Pesan*</label>
+            <textarea name="message" class="form-control" rows="5" required placeholder="Isi Pesan*"></textarea>
+        </div>
+
+        {{-- ✅ Google reCAPTCHA --}}
+        {!! NoCaptcha::display() !!}
+        @if ($errors->has('g-recaptcha-response'))
+            <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+        @endif
+
+        <div class="massage">
+            <button class="gradient-btn" type="submit">KIRIM PESAN</button>
+        </div>
+    </form>
+
+</div>
+
+{{-- ✅ Load JS --}}
+{!! NoCaptcha::renderJs() !!}
+
+
+@endsection

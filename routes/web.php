@@ -22,8 +22,9 @@ Route::get('/layanan-kami', [ServiceController::class, 'index'])->name('services
 Route::get('/artikel', [ArticleController::class, 'index'])->name('articles');
 
 // Contact
-Route::get('/hubungi-kami', [ContactController::class, 'index'])->name('contact');
-Route::post('/hubungi-kami', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::get('/hubungi-kami', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/hubungi-kami', [ContactController::class, 'send'])->name('contact.send');
 
 // Register
 Route::get('/daftar-online', [RegisterController::class, 'index'])->name('register');
